@@ -180,7 +180,7 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <div className="flex items-center p-3">
+              <Link href="/game" className="flex items-center p-3 hover:bg-[#f9f9f9]">
                 <div className="w-8 text-[#62c11e] text-sm">IP</div>
                 <div className="w-16 text-sm flex items-center justify-center">
                   <div className="relative w-5 h-5 mr-1 rounded-full border border-[#5f6368] flex items-center justify-center">
@@ -189,80 +189,13 @@ export default function LandingPage() {
                   </div>
                   <span>11:00</span>
                 </div>
-                <div className="w-16 text-sm bg-[#62c11e] text-white text-center rounded-full">13 - 69</div>
-                <div className="flex-1 text-sm ml-2">Chicago Bulls @ Philadelphia 76ers</div>
+                <div className="w-16 text-sm bg-[#62c11e] text-white text-center rounded-full">108 - 95</div>
+                <div className="flex-1 text-sm ml-2">Los Angeles Lakers @ Boston Celtics</div>
                 <div className="flex items-center gap-2">
                   <button className="px-2 py-1 text-xs border border-[#dcdddf] rounded">+ Add</button>
                   <button className="px-2 py-1 text-xs border border-[#dcdddf] rounded">Suspend</button>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* NBA Section (Duplicate as shown in the image) */}
-          <div className="border-b border-[#dcdddf]">
-            <div className="flex items-center justify-between p-3 bg-[#f1f2f3]">
-              <div className="flex items-center gap-2">
-                <ChevronDown className="h-5 w-5" />
-                <Basketball className="h-4 w-4" />
-                <span className="font-medium">NBA</span>
-                <span className="text-xs text-[#5f6368]">3</span>
-                <span className="text-xs px-1.5 py-0.5 bg-[#4CAF50] text-white rounded">Open</span>
-              </div>
-              <button className="text-sm text-[#5f6368]">Suspend All NBA</button>
-            </div>
-
-            <div className="divide-y divide-[#dcdddf]">
-              <div className="flex items-center p-3">
-                <div className="w-8 text-[#62c11e] text-sm">IP</div>
-                <div className="w-16 text-sm flex items-center justify-center">
-                  <div className="relative w-5 h-5 mr-1 rounded-full border border-[#5f6368] flex items-center justify-center">
-                    <div className="absolute top-[7px] left-[9px] w-[1px] h-[3px] bg-[#5f6368] origin-bottom transform rotate-0"></div>
-                    <div className="absolute top-[7px] left-[9px] w-[1px] h-[5px] bg-[#5f6368] origin-bottom transform rotate-90"></div>
-                  </div>
-                  <span>11:00</span>
-                </div>
-                <div className="w-16 text-sm bg-[#62c11e] text-white text-center rounded-full">13 - 69</div>
-                <div className="flex-1 text-sm ml-2">Boston Celtics @ Washington Wizards</div>
-                <div className="flex items-center gap-2">
-                  <button className="px-2 py-1 text-xs border border-[#dcdddf] rounded">+ Add</button>
-                  <button className="px-2 py-1 text-xs border border-[#dcdddf] rounded">Suspend</button>
-                </div>
-              </div>
-
-              <div className="flex items-center p-3">
-                <div className="w-8 text-[#62c11e] text-sm">IP</div>
-                <div className="w-16 text-sm flex items-center justify-center">
-                  <div className="relative w-5 h-5 mr-1 rounded-full border border-[#5f6368] flex items-center justify-center">
-                    <div className="absolute top-[7px] left-[9px] w-[1px] h-[3px] bg-[#5f6368] origin-bottom transform rotate-0"></div>
-                    <div className="absolute top-[7px] left-[9px] w-[1px] h-[5px] bg-[#5f6368] origin-bottom transform rotate-90"></div>
-                  </div>
-                  <span>11:00</span>
-                </div>
-                <div className="w-16 text-sm bg-[#62c11e] text-white text-center rounded-full">13 - 69</div>
-                <div className="flex-1 text-sm ml-2">Brooklyn Nets @ Toronto Raptors</div>
-                <div className="flex items-center gap-2">
-                  <button className="px-2 py-1 text-xs border border-[#dcdddf] rounded">+ Add</button>
-                  <button className="px-2 py-1 text-xs border border-[#dcdddf] rounded">Suspend</button>
-                </div>
-              </div>
-
-              <div className="flex items-center p-3">
-                <div className="w-8 text-[#62c11e] text-sm">IP</div>
-                <div className="w-16 text-sm flex items-center justify-center">
-                  <div className="relative w-5 h-5 mr-1 rounded-full border border-[#5f6368] flex items-center justify-center">
-                    <div className="absolute top-[7px] left-[9px] w-[1px] h-[3px] bg-[#5f6368] origin-bottom transform rotate-0"></div>
-                    <div className="absolute top-[7px] left-[9px] w-[1px] h-[5px] bg-[#5f6368] origin-bottom transform rotate-90"></div>
-                  </div>
-                  <span>11:00</span>
-                </div>
-                <div className="w-16 text-sm bg-[#62c11e] text-white text-center rounded-full">13 - 69</div>
-                <div className="flex-1 text-sm ml-2">Chicago Bulls @ Philadelphia 76ers</div>
-                <div className="flex items-center gap-2">
-                  <button className="px-2 py-1 text-xs border border-[#dcdddf] rounded">+ Add</button>
-                  <button className="px-2 py-1 text-xs border border-[#dcdddf] rounded">Suspend</button>
-                </div>
-              </div>
+              </Link>
             </div>
           </div>
 
@@ -314,7 +247,7 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <Link href="/game" className="flex items-center p-3 hover:bg-[#f9f9f9]">
+              <div className="flex items-center p-3">
                 <div className="w-8 text-[#62c11e] text-sm">IP</div>
                 <div className="w-16 text-sm flex items-center justify-center">
                   <div className="relative w-5 h-5 mr-1 rounded-full border border-[#5f6368] flex items-center justify-center">
@@ -323,13 +256,13 @@ export default function LandingPage() {
                   </div>
                   <span>11:00</span>
                 </div>
-                <div className="w-16 text-sm bg-[#62c11e] text-white text-center rounded-full">13 - 69</div>
+                <div className="w-16 text-sm bg-[#62c11e] text-white text-center rounded-full">21 - 14</div>
                 <div className="flex-1 text-sm ml-2">Chicago Bears @ Detroit Lions</div>
                 <div className="flex items-center gap-2">
                   <button className="px-2 py-1 text-xs border border-[#dcdddf] rounded">+ Add</button>
                   <button className="px-2 py-1 text-xs border border-[#dcdddf] rounded">Suspend</button>
                 </div>
-              </Link>
+              </div>
             </div>
           </div>
         </div>
