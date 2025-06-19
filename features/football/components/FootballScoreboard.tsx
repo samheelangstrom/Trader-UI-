@@ -2,7 +2,7 @@
 
 import type { FootballGame } from "../types"
 import { RushingTooltip } from "./RushingTooltip"
-import { GenericScoreboard } from "@/features/game/components/GenericScoreboard"
+import { GenericScoreboard } from "@/features/scoreboard"
 
 interface FootballScoreboardProps {
   game: FootballGame

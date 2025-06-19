@@ -1,11 +1,11 @@
 import type { Game } from "../types"
-import { GenericScoreboard } from "./GenericScoreboard"
+import { GenericScoreboard } from "@/features/scoreboard"
 
-interface ScoreboardViewProps {
+interface BasketballScoreboardProps {
   game: Game
 }
 
-export function ScoreboardView({ game }: ScoreboardViewProps) {
+export function BasketballScoreboard({ game }: BasketballScoreboardProps) {
   if (!game.stats) return null
 
   const stats = [
