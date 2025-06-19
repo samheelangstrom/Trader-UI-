@@ -213,7 +213,7 @@ export default function LandingPage() {
             </div>
 
             <div className="divide-y divide-[#dcdddf]">
-              <div className="flex items-center p-3">
+              <Link href="/nfl-game" className="flex items-center p-3 hover:bg-[#f9f9f9]">
                 <div className="w-8 text-[#62c11e] text-sm">IP</div>
                 <div className="w-16 text-sm flex items-center justify-center">
                   <div className="relative w-5 h-5 mr-1 rounded-full border border-[#5f6368] flex items-center justify-center">
@@ -222,13 +222,13 @@ export default function LandingPage() {
                   </div>
                   <span>11:00</span>
                 </div>
-                <div className="w-16 text-sm bg-[#62c11e] text-white text-center rounded-full">13 - 69</div>
+                <div className="w-16 text-sm bg-[#62c11e] text-white text-center rounded-full">17 - 10</div>
                 <div className="flex-1 text-sm ml-2">Dallas Cowboys @ New York Giants</div>
                 <div className="flex items-center gap-2">
                   <button className="px-2 py-1 text-xs border border-[#dcdddf] rounded">+ Add</button>
                   <button className="px-2 py-1 text-xs border border-[#dcdddf] rounded">Suspend</button>
                 </div>
-              </div>
+              </Link>
 
               <div className="flex items-center p-3">
                 <div className="w-8 text-[#62c11e] text-sm">IP</div>

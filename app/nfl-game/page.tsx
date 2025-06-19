@@ -2,8 +2,8 @@
 
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
-import { FootballScoreboard } from "@/features/football"
-import type { FootballGame } from "@/features/football"
+import { FootballScoreboard } from "@/features/football/components/FootballScoreboard"
+import type { FootballGame } from "@/features/football/types"
 
 export default function NflGamePage() {
   const game: FootballGame = {

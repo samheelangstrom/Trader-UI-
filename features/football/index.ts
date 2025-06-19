@@ -1,3 +1,3 @@
-export * from "./components/FootballScoreboard"
-export * from "./components/RushingTooltip"
-export * from "./types"
+// features/football/index.ts
+export { FootballScoreboard } from "./components/FootballScoreboard"
+export type { FootballGame } from "./types"
