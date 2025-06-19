@@ -47,8 +47,12 @@ export function FixtureTable({ fixtures, isLoading, onTogglePin, onRefresh }: Fi
     }
   })
 
-  const handleFixtureClick = (fixtureId: string) => {
-    router.push(`/game?id=${fixtureId}`)
+  const handleFixtureClick = (fixtureId: string, sport: string) => {
+    if (sport === "football") {
+      router.push(`/nfl-game?id=${fixtureId}`)
+    } else {
+      router.push(`/game?id=${fixtureId}`)
+    }
   }
 
   const getSportIcon = (sport: string) => {
@@ -249,7 +253,7 @@ export function FixtureTable({ fixtures, isLoading, onTogglePin, onRefresh }: Fi
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => handleFixtureClick(fixture.id)}
+                      onClick={() => handleFixtureClick(fixture.id, fixture.sport)}
                       className="text-blue-600"
                     >
                       View
