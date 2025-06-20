@@ -1,13 +1,6 @@
 "use client";
 import Link from "next/link";
-import {
-  ArrowLeft,
-  ChevronDown,
-  X,
-  User,
-  CheckCircle2,
-  Circle,
-} from "lucide-react";
+import { ArrowLeft, ChevronDown, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FootballScoreboard } from "@/features/football/components/FootballScoreboard";
 import type { FootballGame } from "@/features/football/types";
