@@ -6,6 +6,34 @@ import TopNavigation from "@/components/top-navigation"
 import { Card, CardContent } from "@/components/ui/card"
 import { Select, SelectTrigger, SelectContent, SelectItem } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
+import { AutoLineMovementView } from "@/features/auto-line-mover"
+
+const mockMarkets = [
+  {
+    marketId: 'nfl.1234.ou25',
+    event: 'NYG vs DAL',
+    startTime: '2025-09-15T20:25:00Z',
+    currentPrice: 2.25,
+    simPrice: 2.10,
+    lean: 'Over',
+    confidence: {
+      value: 'Medium',
+      source: 'Sim',
+      setBy: 'System',
+      updatedAt: '2025-06-16T09:22:10Z',
+    },
+    endorsed: true,
+  },
+]
+
+const confidenceColors: Record<string, string> = {
+  High: 'bg-green-500',
+  Medium: 'bg-yellow-400',
+  Low: 'bg-red-500',
+}
+
+function ConfidenceInputUI() {
+  const [markets, setMarkets] = useState(mockMarkets)
 
   const handleConfidenceChange = (marketId: string, newConfidence: string) => {
     const updated = markets.map((market) =>
@@ -63,7 +91,6 @@ import { Badge } from "@/components/ui/badge"
           </CardContent>
         </Card>
       ))}
-
     </div>
   )
 }
