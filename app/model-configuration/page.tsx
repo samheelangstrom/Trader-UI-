@@ -6,6 +6,7 @@ import TopNavigation from "@/components/top-navigation"
 import { Card, CardContent } from "@/components/ui/card"
 import { Select, SelectTrigger, SelectContent, SelectItem } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
+import { AutoLineMovementView } from "@/features/auto-line-mover"
 import { sportsData } from "@/features/auto-line-mover/data"
 
 const mockMarkets = sportsData
@@ -96,80 +97,6 @@ function ConfidenceInputUI() {
   )
 }
 
-// Placeholder components for the Model Configuration sections
-const AutoLineMovementConfig = () => (
-  <div className="p-4">
-    <h2 className="text-xl font-bold mb-4">Auto Line Movement Configuration</h2>
-    <div className="bg-white rounded-md shadow p-4">
-      <p className="text-sm text-gray-500 mb-4">
-        Configure the Auto Line Movement model settings, including thresholds, market applicability, and response
-        parameters.
-      </p>
-
-      <div className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="border rounded-md p-4">
-            <h3 className="font-medium mb-2">Default Parameters</h3>
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <span className="text-sm">Liability Threshold</span>
-                <span className="text-sm font-medium">65%</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-sm">Max Movement</span>
-                <span className="text-sm font-medium">15 cents</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-sm">Cooldown Period</span>
-                <span className="text-sm font-medium">5 minutes</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="border rounded-md p-4">
-            <h3 className="font-medium mb-2">Model Performance</h3>
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <span className="text-sm">Accuracy</span>
-                <span className="text-sm font-medium text-green-600">92.4%</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-sm">Average Response Time</span>
-                <span className="text-sm font-medium">1.2 seconds</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-sm">Last Calibration</span>
-                <span className="text-sm font-medium">Today, 09:15 AM</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="border rounded-md p-4">
-          <h3 className="font-medium mb-2">Market Coverage</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-            <div className="border rounded p-2 text-center bg-green-50 border-green-200">
-              <div className="text-xs text-green-800">NBA</div>
-              <div className="text-sm font-medium">Enabled</div>
-            </div>
-            <div className="border rounded p-2 text-center bg-green-50 border-green-200">
-              <div className="text-xs text-green-800">NFL</div>
-              <div className="text-sm font-medium">Enabled</div>
-            </div>
-            <div className="border rounded p-2 text-center bg-yellow-50 border-yellow-200">
-              <div className="text-xs text-yellow-800">MLB</div>
-              <div className="text-sm font-medium">Partial</div>
-            </div>
-            <div className="border rounded p-2 text-center bg-gray-50 border-gray-200">
-              <div className="text-xs text-gray-800">NCAAF</div>
-              <div className="text-sm font-medium">Disabled</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-)
 
 const BlenderWeightingConfig = () => (
   <div className="p-4">
@@ -344,7 +271,7 @@ export default function ModelConfigurationPage() {
           </TabsList>
 
           <TabsContent value="alm">
-            <AutoLineMovementConfig />
+            <AutoLineMovementView />
           </TabsContent>
 
           <TabsContent value="blender">
