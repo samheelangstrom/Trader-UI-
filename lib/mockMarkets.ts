@@ -1,20 +1,5 @@
 export const mockMarkets = [
   {
-    marketId: "nfl.1234.total",
-    event: "NYG vs DAL Total Points",
-    startTime: "2025-09-15T20:25:00Z",
-    currentPrice: 2.25,
-    simPrice: 2.1,
-    lean: "Over",
-    confidence: {
-      value: "Medium",
-      source: "Sim",
-      setBy: "System",
-      updatedAt: "2025-06-16T09:22:10Z",
-    },
-    endorsed: true,
-  },
-  {
     marketId: "nba.lebron.assists",
     event: "LAL vs BOS - LeBron James Assists",
     startTime: "2025-06-20T00:00:00Z",
