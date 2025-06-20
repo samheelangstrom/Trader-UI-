@@ -6,7 +6,7 @@ import { mockMarkets } from "@/lib/mockMarkets"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import TopNavigation from "@/components/top-navigation"
 import { Card, CardContent } from "@/components/ui/card"
-import { Select, SelectTrigger, SelectContent, SelectItem } from "@/components/ui/select"
+import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { AutoLineMovementView } from "@/features/auto-line-mover"
 
@@ -44,13 +44,13 @@ function ConfidenceInputUI() {
             </div>
             <div className="col-span-1">
               <Select
+                value={market.confidence.value}
                 onValueChange={(val) =>
                   handleConfidenceChange(market.marketId, val)
                 }
-                defaultValue={market.confidence.value}
               >
                 <SelectTrigger className="w-[120px]">
-                  {market.confidence.value}
+                  <SelectValue placeholder="Select" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="High">High</SelectItem>
