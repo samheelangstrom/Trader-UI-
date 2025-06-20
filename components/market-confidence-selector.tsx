@@ -1,0 +1,35 @@
+"use client"
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { useMarketConfidence } from "@/hooks/useMarketConfidence";
+import { mockMarkets } from "@/lib/mockMarkets";
+
+interface MarketConfidenceSelectorProps {
+  marketId: string;
+}
+
+export default function MarketConfidenceSelector({ marketId }: MarketConfidenceSelectorProps) {
+  const { markets, updateConfidence } = useMarketConfidence(mockMarkets);
+  const market = markets.find((m) => m.marketId === marketId);
+
+  if (!market) return null;
+
+  return (
+    <div className="mt-1 flex items-center gap-2">
+      <Badge>{market.confidence.value}</Badge>
+      <Select
+        value={market.confidence.value}
+        onValueChange={(val) => updateConfidence(marketId, val as any)}
+      >
+        <SelectTrigger className="w-[100px]">
+          <SelectValue placeholder="Confidence" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="High">High</SelectItem>
+          <SelectItem value="Medium">Medium</SelectItem>
+          <SelectItem value="Low">Low</SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
+  );
+}
