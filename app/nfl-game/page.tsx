@@ -13,6 +13,8 @@ import { useEffect, useState } from "react"
 import { FootballScoreboard } from "@/features/football/components/FootballScoreboard"
 import type { FootballGame } from "@/features/football/types"
 import { ScoreboardTabs } from "@/features/basketball"
+import Sidebar from "@/components/sidebar"
+import TopNavigation from "@/components/top-navigation"
 
 export default function NflGamePage() {
   const [scoreboardTab, setScoreboardTab] = useState(
@@ -151,18 +153,24 @@ export default function NflGamePage() {
   }
 
   return (
-    <div className="bg-[#fafafa] min-h-screen text-[#2b2c2d] p-4">
-      <Link
-        href="/"
-        className="flex items-center gap-2 mb-4 text-[#5f6368] hover:text-[#2b2c2d]"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        <span>Back to fixtures</span>
-      </Link>
+    <div className="bg-[#fafafa] min-h-screen text-[#2b2c2d] flex">
+      <Sidebar />
 
-      <ScoreboardTabs activeTab={scoreboardTab} onTabChange={setScoreboardTab} />
+      <div className="flex-1">
+        <TopNavigation />
 
-      {scoreboardTab === "scoreboard" && <FootballScoreboard game={game} />}
+        <div className="max-w-7xl mx-auto p-4">
+          <Link
+            href="/"
+            className="flex items-center gap-2 mb-4 text-[#5f6368] hover:text-[#2b2c2d]"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            <span>Back to fixtures</span>
+          </Link>
+
+          <ScoreboardTabs activeTab={scoreboardTab} onTabChange={setScoreboardTab} />
+
+          {scoreboardTab === "scoreboard" && <FootballScoreboard game={game} />}
 
       {scoreboardTab === "alerts" && (
         <div className="mb-6 resize-y overflow-auto min-h-[400px] max-h-[800px] border border-[#dcdddf] rounded-md">
@@ -368,5 +376,7 @@ export default function NflGamePage() {
         )}
       </div>
     </div>
+  </div>
+</div>
   )
 }
