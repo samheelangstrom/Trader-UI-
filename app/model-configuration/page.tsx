@@ -1,30 +1,14 @@
 "use client"
 
 import { useState } from "react"
+import { useMarketConfidence } from "@/hooks/useMarketConfidence"
+import { mockMarkets } from "@/lib/mockMarkets"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import TopNavigation from "@/components/top-navigation"
 import { Card, CardContent } from "@/components/ui/card"
 import { Select, SelectTrigger, SelectContent, SelectItem } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { AutoLineMovementView } from "@/features/auto-line-mover"
-
-const mockMarkets = [
-  {
-    marketId: 'nfl.1234.ou25',
-    event: 'NYG vs DAL',
-    startTime: '2025-09-15T20:25:00Z',
-    currentPrice: 2.25,
-    simPrice: 2.10,
-    lean: 'Over',
-    confidence: {
-      value: 'Medium',
-      source: 'Sim',
-      setBy: 'System',
-      updatedAt: '2025-06-16T09:22:10Z',
-    },
-    endorsed: true,
-  },
-]
 
 const confidenceColors: Record<string, string> = {
   High: 'bg-green-500',
@@ -33,23 +17,10 @@ const confidenceColors: Record<string, string> = {
 }
 
 function ConfidenceInputUI() {
-  const [markets, setMarkets] = useState(mockMarkets)
+  const { markets, updateConfidence } = useMarketConfidence(mockMarkets)
 
   const handleConfidenceChange = (marketId: string, newConfidence: string) => {
-    const updated = markets.map((market) =>
-      market.marketId === marketId
-        ? {
-            ...market,
-            confidence: {
-              value: newConfidence,
-              source: 'Manual',
-              setBy: 'Trader1',
-              updatedAt: new Date().toISOString(),
-            },
-          }
-        : market
-    )
-    setMarkets(updated)
+    updateConfidence(marketId, newConfidence as any)
   }
 
   return (
