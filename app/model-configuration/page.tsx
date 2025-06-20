@@ -3,6 +3,96 @@
 import { useState } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import TopNavigation from "@/components/top-navigation"
+import { Card, CardContent } from "@/components/ui/card"
+import { Select, SelectTrigger, SelectContent, SelectItem } from "@/components/ui/select"
+import { Badge } from "@/components/ui/badge"
+
+const mockMarkets = [
+  {
+    marketId: 'nfl.1234.ou25',
+    event: 'NYG vs DAL',
+    startTime: '2025-09-15T20:25:00Z',
+    currentPrice: 2.25,
+    simPrice: 2.10,
+    lean: 'Over',
+    confidence: {
+      value: 'Medium',
+      source: 'Sim',
+      setBy: 'System',
+      updatedAt: '2025-06-16T09:22:10Z',
+    },
+    endorsed: true,
+  },
+]
+
+const confidenceColors: Record<string, string> = {
+  High: 'bg-green-500',
+  Medium: 'bg-yellow-400',
+  Low: 'bg-red-500',
+}
+
+function ConfidenceInputUI() {
+  const [markets, setMarkets] = useState(mockMarkets)
+
+  const handleConfidenceChange = (marketId: string, newConfidence: string) => {
+    const updated = markets.map((market) =>
+      market.marketId === marketId
+        ? {
+            ...market,
+            confidence: {
+              value: newConfidence,
+              source: 'Manual',
+              setBy: 'Trader1',
+              updatedAt: new Date().toISOString(),
+            },
+          }
+        : market
+    )
+    setMarkets(updated)
+  }
+
+  return (
+    <div className="p-6 space-y-4">
+      {markets.map((market) => (
+        <Card key={market.marketId}>
+          <CardContent className="grid grid-cols-6 items-center gap-4">
+            <div className="col-span-1 font-semibold">{market.event}</div>
+            <div className="col-span-1 text-sm text-gray-500">
+              {new Date(market.startTime).toLocaleString()}
+            </div>
+            <div className="col-span-1">Current Price: {market.currentPrice}</div>
+            <div className="col-span-1">Lean: {market.lean}</div>
+            <div className="col-span-1 flex items-center gap-2">
+              <Badge className={confidenceColors[market.confidence.value]}>
+                {market.confidence.value}
+              </Badge>
+              <span className="text-xs text-muted-foreground">
+                ({market.confidence.source})
+              </span>
+            </div>
+            <div className="col-span-1">
+              <Select
+                onValueChange={(val) =>
+                  handleConfidenceChange(market.marketId, val)
+                }
+                defaultValue={market.confidence.value}
+              >
+                <SelectTrigger className="w-[120px]">
+                  {market.confidence.value}
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="High">High</SelectItem>
+                  <SelectItem value="Medium">Medium</SelectItem>
+                  <SelectItem value="Low">Low</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  )
+}
 
 // Placeholder components for the Model Configuration sections
 const AutoLineMovementConfig = () => (
@@ -154,6 +244,7 @@ const BlenderWeightingConfig = () => (
             </div>
           </div>
         </div>
+        <ConfidenceInputUI />
       </div>
     </div>
   </div>
