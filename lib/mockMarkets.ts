@@ -1,3 +1,5 @@
+// Mock market data used when local storage is empty
+
 export const mockMarkets = [
   {
     marketId: "nba.lebron.assists",
