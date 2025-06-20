@@ -15,6 +15,7 @@ import {
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Sidebar from "@/components/sidebar"
 import TopNavigation from "@/components/top-navigation"
+import MarketConfidenceSelector from "@/components/market-confidence-selector"
 
 export default function GamePage() {
   const [carouselView, setCarouselView] = useState("stats")
@@ -826,10 +827,12 @@ export default function GamePage() {
                     <div className="p-2 bg-[#F44336] bg-opacity-20 border border-[#F44336] rounded">
                       <div className="text-xs font-medium">LeBron James Assists</div>
                       <div className="text-xs text-[#5f6368]">Suspended</div>
+                      <MarketConfidenceSelector marketId="nba.lebron.assists" />
                     </div>
                     <div className="p-2 bg-[#F44336] bg-opacity-20 border border-[#F44336] rounded">
                       <div className="text-xs font-medium">Anthony Davis Points</div>
                       <div className="text-xs text-[#5f6368]">Suspended</div>
+                      <MarketConfidenceSelector marketId="nba.anthony.points" />
                     </div>
                   </div>
                 </div>
