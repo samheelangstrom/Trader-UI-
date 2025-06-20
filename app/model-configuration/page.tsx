@@ -6,43 +6,6 @@ import TopNavigation from "@/components/top-navigation"
 import { Card, CardContent } from "@/components/ui/card"
 import { Select, SelectTrigger, SelectContent, SelectItem } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { AutoLineMovementView } from "@/features/auto-line-mover"
-import { sportsData } from "@/features/auto-line-mover/data"
-
-const allMockMarkets = sportsData
-  .flatMap((sport) => sport.categories.flatMap((c) => c.markets))
-  .map((m, idx) => ({
-    marketId: m.id,
-    event: m.name,
-    startTime: `2025-09-15T20:${(25 + idx).toString().padStart(2, "0")}:00Z`,
-    currentPrice: +(2.25 + idx * 0.05).toFixed(2),
-    simPrice: +(2.1 + idx * 0.05).toFixed(2),
-    lean: idx % 2 === 0 ? "Over" : "Under",
-    confidence: {
-      value: "Medium",
-      source: "Sim",
-      setBy: "System",
-      updatedAt: "2025-06-16T09:22:10Z",
-    },
-    endorsed: true,
-  }))
-
-const INITIAL_LOAD = 8
-
-const confidenceColors: Record<string, string> = {
-  High: 'bg-green-500',
-  Medium: 'bg-yellow-400',
-  Low: 'bg-red-500',
-}
-
-function ConfidenceInputUI() {
-  const [markets, setMarkets] = useState(allMockMarkets.slice(0, INITIAL_LOAD))
-
-  const loadMoreMarkets = () => {
-    const next = allMockMarkets.slice(markets.length, markets.length + INITIAL_LOAD)
-    if (next.length) setMarkets([...markets, ...next])
-  }
 
   const handleConfidenceChange = (marketId: string, newConfidence: string) => {
     const updated = markets.map((market) =>
@@ -100,11 +63,7 @@ function ConfidenceInputUI() {
           </CardContent>
         </Card>
       ))}
-      {markets.length < allMockMarkets.length && (
-        <Button variant="outline" onClick={loadMoreMarkets} className="w-full">
-          Load more markets
-        </Button>
-      )}
+
     </div>
   )
 }
