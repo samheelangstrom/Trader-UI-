@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useMarketConfidence } from "@/hooks/useMarketConfidence";
-import { mockMarkets } from "@/lib/mockMarkets";
+import { useMarketConfidenceContext } from "@/components/market-confidence-provider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TopNavigation from "@/components/top-navigation";
 import { Card, CardContent } from "@/components/ui/card";
@@ -24,7 +23,7 @@ const confidenceColors: Record<string, string> = {
 };
 
 function ConfidenceInputUI() {
-  const { markets, updateConfidence } = useMarketConfidence(mockMarkets);
+  const { markets, updateConfidence } = useMarketConfidenceContext();
 
   const handleConfidenceChange = (marketId: string, newConfidence: string) => {
     updateConfidence(marketId, newConfidence as any);
