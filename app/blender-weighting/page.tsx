@@ -2,12 +2,11 @@
 
 import { Badge } from "@/components/ui/badge";
 import TopNavigation from "@/components/top-navigation";
-import { useMarketConfidence } from "@/hooks/useMarketConfidence";
-import { mockMarkets } from "@/lib/mockMarkets";
+import { useMarketConfidenceContext } from "@/components/market-confidence-provider";
 import ConfidenceSummary from "@/components/confidence-summary";
 
 export default function BlenderWeightingPage() {
-  const { markets } = useMarketConfidence(mockMarkets);
+  const { markets } = useMarketConfidenceContext();
 
   return (
     <div className="min-h-screen bg-[#f8f9fa]">
