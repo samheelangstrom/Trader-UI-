@@ -1361,6 +1361,9 @@ export default function GamePage() {
                         </tbody>
                       </table>
                     </div>
+                    <div className="p-3 border-t">
+                      <MarketConfidenceSelector marketId="nba.fixture.moneyline" />
+                    </div>
                   </div>
                 )}
               </div>
@@ -1450,6 +1453,9 @@ export default function GamePage() {
                           </tr>
                         </tbody>
                       </table>
+                    </div>
+                    <div className="p-3 border-t">
+                      <MarketConfidenceSelector marketId="nba.fixture.handicap" />
                     </div>
                   </div>
                 )}
@@ -1549,6 +1555,9 @@ export default function GamePage() {
                           </tr>
                         </tbody>
                       </table>
+                    </div>
+                    <div className="p-3 border-t">
+                      <MarketConfidenceSelector marketId="nba.fixture.total" />
                     </div>
                   </div>
                 )}
