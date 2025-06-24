@@ -1,15 +1,14 @@
 "use client"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { useMarketConfidence } from "@/hooks/useMarketConfidence";
-import { mockMarkets } from "@/lib/mockMarkets";
+import { useMarketConfidenceContext } from "@/components/market-confidence-provider";
 
 interface MarketConfidenceSelectorProps {
   marketId: string;
 }
 
 export default function MarketConfidenceSelector({ marketId }: MarketConfidenceSelectorProps) {
-  const { markets, updateConfidence } = useMarketConfidence(mockMarkets);
+  const { markets, updateConfidence } = useMarketConfidenceContext();
   const market = markets.find((m) => m.marketId === marketId);
 
   if (!market) return null;
