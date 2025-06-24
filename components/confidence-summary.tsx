@@ -1,11 +1,10 @@
 "use client";
 
-import { useMarketConfidence } from "@/hooks/useMarketConfidence";
-import { mockMarkets } from "@/lib/mockMarkets";
+import { useMarketConfidenceContext } from "@/components/market-confidence-provider";
 import { summarizeBySport } from "@/lib/confidenceSummary";
 
 export default function ConfidenceSummary() {
-  const { markets } = useMarketConfidence(mockMarkets);
+  const { markets } = useMarketConfidenceContext();
   const summary = summarizeBySport(markets);
   const sports = Object.keys(summary);
   if (sports.length === 0) return null;

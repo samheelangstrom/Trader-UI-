@@ -437,6 +437,9 @@ export default function NflGamePage() {
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Status
                         </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Confidence
+                        </th>
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
@@ -462,6 +465,9 @@ export default function NflGamePage() {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           -
                         </td>
+                        <td className="px-6 py-4">
+                          <MarketConfidenceSelector marketId="nfl.1234.moneyline" />
+                        </td>
                       </tr>
                       <tr className="bg-gray-50">
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -485,12 +491,12 @@ export default function NflGamePage() {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           -
                         </td>
+                        <td className="px-6 py-4">
+                          <MarketConfidenceSelector marketId="nfl.1234.moneyline" />
+                        </td>
                       </tr>
                     </tbody>
                   </table>
-                </div>
-                <div className="p-3 border-t">
-                  <MarketConfidenceSelector marketId="nfl.1234.moneyline" />
                 </div>
               </div>
             )}
@@ -536,6 +542,9 @@ export default function NflGamePage() {
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Status
                         </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Confidence
+                        </th>
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
@@ -561,6 +570,9 @@ export default function NflGamePage() {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           -
                         </td>
+                        <td className="px-6 py-4">
+                          <MarketConfidenceSelector marketId="nfl.1234.spread" />
+                        </td>
                       </tr>
                       <tr className="bg-gray-50">
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -584,12 +596,12 @@ export default function NflGamePage() {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           -
                         </td>
+                        <td className="px-6 py-4">
+                          <MarketConfidenceSelector marketId="nfl.1234.spread" />
+                        </td>
                       </tr>
                     </tbody>
                   </table>
-                </div>
-                <div className="p-3 border-t">
-                  <MarketConfidenceSelector marketId="nfl.1234.spread" />
                 </div>
               </div>
             )}
@@ -635,6 +647,9 @@ export default function NflGamePage() {
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Status
                         </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Confidence
+                        </th>
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
@@ -660,6 +675,9 @@ export default function NflGamePage() {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           -
                         </td>
+                        <td className="px-6 py-4">
+                          <MarketConfidenceSelector marketId="nfl.1234.total" />
+                        </td>
                       </tr>
                       <tr className="bg-gray-50">
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -683,12 +701,12 @@ export default function NflGamePage() {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           -
                         </td>
+                        <td className="px-6 py-4">
+                          <MarketConfidenceSelector marketId="nfl.1234.total" />
+                        </td>
                       </tr>
                     </tbody>
                   </table>
-                </div>
-                <div className="p-3 border-t">
-                  <MarketConfidenceSelector marketId="nfl.1234.total" />
                 </div>
               </div>
             )}
