@@ -1,86 +1,91 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { useMarketConfidenceContext } from "@/components/market-confidence-provider";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import TopNavigation from "@/components/top-navigation";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Select,
-  SelectTrigger,
-  SelectContent,
-  SelectItem,
-  SelectValue,
-} from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
-import { AutoLineMovementView } from "@/features/auto-line-mover";
-import ConfidenceSummary from "@/components/confidence-summary";
+import { useState } from "react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import TopNavigation from "@/components/top-navigation"
 
-const confidenceColors: Record<string, string> = {
-  High: "bg-green-500",
-  Medium: "bg-yellow-400",
-  Low: "bg-red-500",
-};
+// Placeholder components for the Model Configuration sections
+const AutoLineMovementConfig = () => (
+  <div className="p-4">
+    <h2 className="text-xl font-bold mb-4">Auto Line Movement Configuration</h2>
+    <div className="bg-white rounded-md shadow p-4">
+      <p className="text-sm text-gray-500 mb-4">
+        Configure the Auto Line Movement model settings, including thresholds, market applicability, and response
+        parameters.
+      </p>
 
-function ConfidenceInputUI() {
-  const { markets, updateConfidence } = useMarketConfidenceContext();
-
-  const handleConfidenceChange = (marketId: string, newConfidence: string) => {
-    updateConfidence(marketId, newConfidence as any);
-  };
-
-  return (
-    <div className="p-6 space-y-4">
-      {markets.map((market) => (
-        <Card key={market.marketId}>
-          <CardContent className="grid grid-cols-6 items-center gap-4">
-            <div className="col-span-1 font-semibold">{market.event}</div>
-            <div className="col-span-1 text-sm text-gray-500">
-              {new Date(market.startTime).toLocaleString()}
+      <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="border rounded-md p-4">
+            <h3 className="font-medium mb-2">Default Parameters</h3>
+            <div className="space-y-2">
+              <div className="flex justify-between">
+                <span className="text-sm">Liability Threshold</span>
+                <span className="text-sm font-medium">65%</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-sm">Max Movement</span>
+                <span className="text-sm font-medium">15 cents</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-sm">Cooldown Period</span>
+                <span className="text-sm font-medium">5 minutes</span>
+              </div>
             </div>
-            <div className="col-span-1">
-              Current Price: {market.currentPrice}
+          </div>
+
+          <div className="border rounded-md p-4">
+            <h3 className="font-medium mb-2">Model Performance</h3>
+            <div className="space-y-2">
+              <div className="flex justify-between">
+                <span className="text-sm">Accuracy</span>
+                <span className="text-sm font-medium text-green-600">92.4%</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-sm">Average Response Time</span>
+                <span className="text-sm font-medium">1.2 seconds</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-sm">Last Calibration</span>
+                <span className="text-sm font-medium">Today, 09:15 AM</span>
+              </div>
             </div>
-            <div className="col-span-1">Lean: {market.lean}</div>
-            <div className="col-span-1 flex items-center gap-2">
-              <Badge className={confidenceColors[market.confidence.value]}>
-                {market.confidence.value}
-              </Badge>
-              <span className="text-xs text-muted-foreground">
-                ({market.confidence.source})
-              </span>
+          </div>
+        </div>
+
+        <div className="border rounded-md p-4">
+          <h3 className="font-medium mb-2">Market Coverage</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+            <div className="border rounded p-2 text-center bg-green-50 border-green-200">
+              <div className="text-xs text-green-800">NBA</div>
+              <div className="text-sm font-medium">Enabled</div>
             </div>
-            <div className="col-span-1">
-              <Select
-                value={market.confidence.value}
-                onValueChange={(val) =>
-                  handleConfidenceChange(market.marketId, val)
-                }
-              >
-                <SelectTrigger className="w-[120px]">
-                  <SelectValue placeholder="Select" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="High">High</SelectItem>
-                  <SelectItem value="Medium">Medium</SelectItem>
-                  <SelectItem value="Low">Low</SelectItem>
-                </SelectContent>
-              </Select>
+            <div className="border rounded p-2 text-center bg-green-50 border-green-200">
+              <div className="text-xs text-green-800">NFL</div>
+              <div className="text-sm font-medium">Enabled</div>
             </div>
-          </CardContent>
-        </Card>
-      ))}
+            <div className="border rounded p-2 text-center bg-yellow-50 border-yellow-200">
+              <div className="text-xs text-yellow-800">MLB</div>
+              <div className="text-sm font-medium">Partial</div>
+            </div>
+            <div className="border rounded p-2 text-center bg-gray-50 border-gray-200">
+              <div className="text-xs text-gray-800">NCAAF</div>
+              <div className="text-sm font-medium">Disabled</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  );
-}
+  </div>
+)
 
 const BlenderWeightingConfig = () => (
   <div className="p-4">
     <h2 className="text-xl font-bold mb-4">Blender Weighting Configuration</h2>
     <div className="bg-white rounded-md shadow p-4">
       <p className="text-sm text-gray-500 mb-4">
-        Configure the weighting of different models in the blender system to
-        optimize prediction accuracy across different sports and market types.
+        Configure the weighting of different models in the blender system to optimize prediction accuracy across
+        different sports and market types.
       </p>
 
       <div className="space-y-4">
@@ -93,10 +98,7 @@ const BlenderWeightingConfig = () => (
                 <span className="text-sm font-medium">45%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className="bg-blue-600 h-2 rounded-full"
-                  style={{ width: "45%" }}
-                ></div>
+                <div className="bg-blue-600 h-2 rounded-full" style={{ width: "45%" }}></div>
               </div>
             </div>
             <div>
@@ -105,10 +107,7 @@ const BlenderWeightingConfig = () => (
                 <span className="text-sm font-medium">30%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className="bg-green-600 h-2 rounded-full"
-                  style={{ width: "30%" }}
-                ></div>
+                <div className="bg-green-600 h-2 rounded-full" style={{ width: "30%" }}></div>
               </div>
             </div>
             <div>
@@ -117,10 +116,7 @@ const BlenderWeightingConfig = () => (
                 <span className="text-sm font-medium">25%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className="bg-purple-600 h-2 rounded-full"
-                  style={{ width: "25%" }}
-                ></div>
+                <div className="bg-purple-600 h-2 rounded-full" style={{ width: "25%" }}></div>
               </div>
             </div>
           </div>
@@ -135,10 +131,7 @@ const BlenderWeightingConfig = () => (
                 <span className="text-sm font-medium">40%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className="bg-blue-600 h-2 rounded-full"
-                  style={{ width: "40%" }}
-                ></div>
+                <div className="bg-blue-600 h-2 rounded-full" style={{ width: "40%" }}></div>
               </div>
             </div>
             <div>
@@ -147,10 +140,7 @@ const BlenderWeightingConfig = () => (
                 <span className="text-sm font-medium">35%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className="bg-green-600 h-2 rounded-full"
-                  style={{ width: "35%" }}
-                ></div>
+                <div className="bg-green-600 h-2 rounded-full" style={{ width: "35%" }}></div>
               </div>
             </div>
             <div>
@@ -159,28 +149,23 @@ const BlenderWeightingConfig = () => (
                 <span className="text-sm font-medium">25%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className="bg-orange-600 h-2 rounded-full"
-                  style={{ width: "25%" }}
-                ></div>
+                <div className="bg-orange-600 h-2 rounded-full" style={{ width: "25%" }}></div>
               </div>
             </div>
           </div>
         </div>
-        <ConfidenceInputUI />
-        <ConfidenceSummary />
       </div>
     </div>
   </div>
-);
+)
 
 const CompetitorConfigurationConfig = () => (
   <div className="p-4">
     <h2 className="text-xl font-bold mb-4">Competitor Configuration</h2>
     <div className="bg-white rounded-md shadow p-4">
       <p className="text-sm text-gray-500 mb-4">
-        Configure competitor tracking settings, including which competitors to
-        monitor, markets to track, and response thresholds.
+        Configure competitor tracking settings, including which competitors to monitor, markets to track, and response
+        thresholds.
       </p>
 
       <div className="space-y-4">
@@ -190,9 +175,7 @@ const CompetitorConfigurationConfig = () => (
             <div className="border rounded p-3">
               <div className="flex items-center justify-between">
                 <span className="font-medium">Competitor A</span>
-                <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
-                  Active
-                </span>
+                <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Active</span>
               </div>
               <div className="text-xs text-gray-500 mt-1">Priority: High</div>
               <div className="text-xs text-gray-500">Markets: All</div>
@@ -200,9 +183,7 @@ const CompetitorConfigurationConfig = () => (
             <div className="border rounded p-3">
               <div className="flex items-center justify-between">
                 <span className="font-medium">Competitor B</span>
-                <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
-                  Active
-                </span>
+                <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Active</span>
               </div>
               <div className="text-xs text-gray-500 mt-1">Priority: Medium</div>
               <div className="text-xs text-gray-500">Markets: NBA, NFL</div>
@@ -210,9 +191,7 @@ const CompetitorConfigurationConfig = () => (
             <div className="border rounded p-3">
               <div className="flex items-center justify-between">
                 <span className="font-medium">Competitor C</span>
-                <span className="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded">
-                  Inactive
-                </span>
+                <span className="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded">Inactive</span>
               </div>
               <div className="text-xs text-gray-500 mt-1">Priority: Low</div>
               <div className="text-xs text-gray-500">Markets: MLB only</div>
@@ -252,10 +231,10 @@ const CompetitorConfigurationConfig = () => (
       </div>
     </div>
   </div>
-);
+)
 
 export default function ModelConfigurationPage() {
-  const [activeTab, setActiveTab] = useState("alm");
+  const [activeTab, setActiveTab] = useState("alm")
 
   return (
     <div className="min-h-screen bg-[#f8f9fa]">
@@ -268,13 +247,11 @@ export default function ModelConfigurationPage() {
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="alm">Auto Line Mover</TabsTrigger>
             <TabsTrigger value="blender">Blender Weighting</TabsTrigger>
-            <TabsTrigger value="competitor">
-              Competitor Configuration
-            </TabsTrigger>
+            <TabsTrigger value="competitor">Competitor Configuration</TabsTrigger>
           </TabsList>
 
           <TabsContent value="alm">
-            <AutoLineMovementView />
+            <AutoLineMovementConfig />
           </TabsContent>
 
           <TabsContent value="blender">
@@ -287,5 +264,5 @@ export default function ModelConfigurationPage() {
         </Tabs>
       </div>
     </div>
-  );
+  )
 }
