@@ -2,6 +2,7 @@
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { useMarketConfidenceContext } from "@/components/market-confidence-provider";
+import { ConfidenceValue } from "@/hooks/useMarketConfidence";
 
 interface MarketConfidenceSelectorProps {
   marketId: string;
@@ -18,7 +19,7 @@ export default function MarketConfidenceSelector({ marketId }: MarketConfidenceS
       <Badge>{market.confidence.value}</Badge>
       <Select
         value={market.confidence.value}
-        onValueChange={(val) => updateConfidence(marketId, val as any)}
+        onValueChange={(val) => updateConfidence(marketId, val as ConfidenceValue)}
       >
         <SelectTrigger className="w-[100px]">
           <SelectValue placeholder="Confidence" />

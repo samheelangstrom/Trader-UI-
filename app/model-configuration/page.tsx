@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useMarketConfidenceContext } from "@/components/market-confidence-provider";
+import { ConfidenceValue } from "@/hooks/useMarketConfidence";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TopNavigation from "@/components/top-navigation";
 import { Card, CardContent } from "@/components/ui/card";
@@ -25,8 +26,11 @@ const confidenceColors: Record<string, string> = {
 function ConfidenceInputUI() {
   const { markets, updateConfidence } = useMarketConfidenceContext();
 
-  const handleConfidenceChange = (marketId: string, newConfidence: string) => {
-    updateConfidence(marketId, newConfidence as any);
+  const handleConfidenceChange = (
+    marketId: string,
+    newConfidence: ConfidenceValue,
+  ) => {
+    updateConfidence(marketId, newConfidence);
   };
 
   return (
@@ -51,12 +55,15 @@ function ConfidenceInputUI() {
               </span>
             </div>
             <div className="col-span-1">
-              <Select
-                value={market.confidence.value}
-                onValueChange={(val) =>
-                  handleConfidenceChange(market.marketId, val)
-                }
-              >
+                <Select
+                  value={market.confidence.value}
+                  onValueChange={(val) =>
+                    handleConfidenceChange(
+                      market.marketId,
+                      val as ConfidenceValue,
+                    )
+                  }
+                >
                 <SelectTrigger className="w-[120px]">
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
