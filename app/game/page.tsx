@@ -16,6 +16,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Sidebar from "@/components/sidebar"
 import TopNavigation from "@/components/top-navigation"
 import MarketConfidenceSelector from "@/components/market-confidence-selector"
+import MarketClassFilter from "@/components/market-class-filter"
 
 export default function GamePage() {
   const [carouselView, setCarouselView] = useState("stats")
@@ -1163,79 +1164,11 @@ export default function GamePage() {
             </div>
 
             <div className="flex flex-wrap gap-2 mb-4 text-sm">
-              <div className="flex items-center gap-1">
-                <span
-                  className={`px-2 py-1 rounded ${activeMarketFilter === "all" ? "bg-[#2b2c2d] text-white" : "border border-[#dcdddf]"}`}
-                  onClick={() => setActiveMarketFilter("all")}
-                >
-                  All Markets
-                </span>
-              </div>
-              <div className="flex items-center gap-1">
-                <span
-                  className={`px-2 py-1 rounded ${activeMarketFilter === "fixture" ? "bg-[#2b2c2d] text-white" : "border border-[#dcdddf]"}`}
-                  onClick={() => setActiveMarketFilter("fixture")}
-                >
-                  Fixture Markets
-                </span>
-              </div>
-              <div className="flex items-center gap-1">
-                <span
-                  className={`px-2 py-1 rounded ${activeMarketFilter === "player" ? "bg-[#2b2c2d] text-white" : "border border-[#dcdddf]"}`}
-                  onClick={() => setActiveMarketFilter("player")}
-                >
-                  Player Matchup Handicap
-                </span>
-              </div>
-              <div className="flex items-center gap-1">
-                <span
-                  className={`px-2 py-1 rounded ${activeMarketFilter === "combined" ? "bg-[#2b2c2d] text-white" : "border border-[#dcdddf]"}`}
-                  onClick={() => setActiveMarketFilter("combined")}
-                >
-                  Player Combined
-                </span>
-              </div>
-              <div className="flex items-center gap-1">
-                <span
-                  className={`px-2 py-1 rounded ${activeMarketFilter === "player-markets" ? "bg-[#2b2c2d] text-white" : "border border-[#dcdddf]"}`}
-                  onClick={() => setActiveMarketFilter("player-markets")}
-                >
-                  Player Markets
-                </span>
-              </div>
-              <div className="flex items-center gap-1">
-                <span
-                  className={`px-2 py-1 rounded ${activeMarketFilter === "player-matchup" ? "bg-[#2b2c2d] text-white" : "border border-[#dcdddf]"}`}
-                  onClick={() => setActiveMarketFilter("player-matchup")}
-                >
-                  Player Matchup
-                </span>
-              </div>
-              <div className="flex items-center gap-1">
-                <span
-                  className={`px-2 py-1 rounded ${activeMarketFilter === "player-milestone" ? "bg-[#2b2c2d] text-white" : "border border-[#dcdddf]"}`}
-                  onClick={() => setActiveMarketFilter("player-milestone")}
-                >
-                  Player Milestone
-                </span>
-              </div>
-              <div className="flex items-center gap-1">
-                <span
-                  className={`px-2 py-1 rounded ${activeMarketFilter === "player-race" ? "bg-[#2b2c2d] text-white" : "border border-[#dcdddf]"}`}
-                  onClick={() => setActiveMarketFilter("player-race")}
-                >
-                  Player Race
-                </span>
-              </div>
-              <div className="flex items-center gap-1">
-                <span
-                  className={`px-2 py-1 rounded ${activeMarketFilter === "most" ? "bg-[#2b2c2d] text-white" : "border border-[#dcdddf]"}`}
-                  onClick={() => setActiveMarketFilter("most")}
-                >
-                  Player Most
-                </span>
-              </div>
-
+              <MarketClassFilter
+                sport="basketball"
+                active={activeMarketFilter}
+                onChange={(val) => setActiveMarketFilter(val ?? "all")}
+              />
               <div className="ml-auto flex items-center gap-2">
                 <span className="text-xs">Adjusted Only</span>
                 <div className="w-8 h-4 bg-[#dcdddf] rounded-full relative">

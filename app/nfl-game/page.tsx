@@ -16,6 +16,7 @@ import { ScoreboardTabs } from "@/features/basketball";
 import Sidebar from "@/components/sidebar";
 import TopNavigation from "@/components/top-navigation";
 import MarketConfidenceSelector from "@/components/market-confidence-selector";
+import MarketClassFilter from "@/components/market-class-filter";
 
 export default function NflGamePage() {
   const [scoreboardTab, setScoreboardTab] = useState(
@@ -332,22 +333,12 @@ export default function NflGamePage() {
           {/* Market Class */}
           <div className="mb-4">
             <h4 className="text-sm font-medium mb-2">Market Class</h4>
-            <div className="flex gap-2 flex-wrap">
-              <div
-                className="flex-1 min-w-[120px] p-2 bg-[#62c11e] bg-opacity-20 border border-[#62c11e] rounded text-center cursor-pointer hover:bg-opacity-30"
-                onClick={() => toggleMarketClassExpansion("fixture")}
-              >
-                <div className="text-xs font-medium">Fixture</div>
-                <div className="text-xs text-[#5f6368]">100% Open</div>
-              </div>
-              <div
-                className="flex-1 min-w-[120px] p-2 bg-[#FFC107] bg-opacity-20 border border-[#FFC107] rounded text-center cursor-pointer hover:bg-opacity-30"
-                onClick={() => toggleMarketClassExpansion("player")}
-              >
-                <div className="text-xs font-medium">Player</div>
-                <div className="text-xs text-[#5f6368]">75% Open</div>
-              </div>
-            </div>
+            <MarketClassFilter
+              sport="football"
+              active={expandedMarketClass}
+              onChange={(val) => toggleMarketClassExpansion(val ?? "")}
+              hideAll
+            />
 
             {expandedMarketClass && (
               <div className="mt-4 border border-[#dcdddf] rounded-md overflow-hidden">
