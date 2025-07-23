@@ -1,12 +1,16 @@
 "use client"
 
 import React, { createContext, useContext } from 'react'
-import { useMarketConfidence, Market } from '@/hooks/useMarketConfidence'
+import {
+  useMarketConfidence,
+  Market,
+  ConfidenceValue,
+} from '@/hooks/useMarketConfidence'
 import { mockMarkets } from '@/lib/mockMarkets'
 
 interface ContextValue {
   markets: Market[]
-  updateConfidence: (marketId: string, value: any) => void
+  updateConfidence: (marketId: string, value: ConfidenceValue) => void
 }
 
 const MarketConfidenceContext = createContext<ContextValue | undefined>(undefined)

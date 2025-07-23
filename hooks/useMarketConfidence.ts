@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { mockMarkets } from '@/lib/mockMarkets'
 
-type ConfidenceValue = 'High' | 'Medium' | 'Low'
+export type ConfidenceValue = 'High' | 'Medium' | 'Low'
 
 export interface Market {
   marketId: string
