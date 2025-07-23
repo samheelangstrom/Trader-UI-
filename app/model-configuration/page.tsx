@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { ConfidenceValue } from "@/hooks/useMarketConfidence";
 import { useMarketConfidenceContext } from "@/components/market-confidence-provider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TopNavigation from "@/components/top-navigation";
@@ -25,8 +26,11 @@ const confidenceColors: Record<string, string> = {
 function ConfidenceInputUI() {
   const { markets, updateConfidence } = useMarketConfidenceContext();
 
-  const handleConfidenceChange = (marketId: string, newConfidence: string) => {
-    updateConfidence(marketId, newConfidence as any);
+  const handleConfidenceChange = (
+    marketId: string,
+    newConfidence: ConfidenceValue,
+  ) => {
+    updateConfidence(marketId, newConfidence);
   };
 
   return (
@@ -53,7 +57,7 @@ function ConfidenceInputUI() {
             <div className="col-span-1">
               <Select
                 value={market.confidence.value}
-                onValueChange={(val) =>
+                onValueChange={(val: ConfidenceValue) =>
                   handleConfidenceChange(market.marketId, val)
                 }
               >
@@ -255,7 +259,9 @@ const CompetitorConfigurationConfig = () => (
 );
 
 export default function ModelConfigurationPage() {
-  const [activeTab, setActiveTab] = useState("alm");
+  const [activeTab, setActiveTab] = useState<'alm' | 'blender' | 'competitor'>(
+    'alm',
+  );
 
   return (
     <div className="min-h-screen bg-[#f8f9fa]">
